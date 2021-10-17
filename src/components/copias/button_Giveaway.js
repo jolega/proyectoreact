@@ -1,4 +1,6 @@
 // Importacion de Modulos,
+import { createPopup } from '@typeform/embed';
+import '@typeform/embed/build/css/popup.css';
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 // Declaracion de Variable,
@@ -11,7 +13,9 @@ const Mystyle = styled.button`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  background-color: #379CFB;
+
+  background-color: #379cfb;
+
   color: #000000;
   font-size: 18px;
   border-radius: 22px;
@@ -29,12 +33,26 @@ const Mystyle = styled.button`
   }
 `;
 
-// Declaracion de Funciones,
+// declaracion del evento
+
+function OpenGiveaway() {
+  createPopup('EmcavTKa', {
+    open: 'time',
+    openValue: 1,
+  });
+}
+
+// Declaracion de retunr,
 const ButtonGiveaway = () => {
   return (
     <Fragment>
-      <Mystyle data-tf-popup="EmcavTKa" data-tf-auto-close="2000">
-        Enter the Giveaway 2
+      <Mystyle
+        onClick={e => {
+          e.preventDefault();
+          OpenGiveaway();
+        }}
+      >
+        Enter the Giveaway
       </Mystyle>
     </Fragment>
   );

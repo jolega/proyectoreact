@@ -1,4 +1,5 @@
 // en esta page se dibuja el home page//
+import { createPopup } from '@typeform/embed';
 import "./App.css";
 // importaciones creadas por mi
 import { BrowserRouter as Router, Switch } from "react-router-dom";
@@ -10,9 +11,7 @@ import Contactus from "./components/navigation/contact-us.js";
 import DropdownImageHelp from "./components/navigation/dropdownImageHelp.js";
 import ButtonGiveaway from "./components/navigation/buttonGiveaway.js";
 import ButtonColors from "./components/navigation/buttonColors.js";
-import popupModal from "./components/navigation/popupModal.js";
-import popupHomepage from "./components/navigation/popupHomepage.js";
-import { createPopup } from '@typeform/embed';
+import Cookiesbutton from "./components/navigation/cookiesbutton.js";
 
 
 //Delcaracion de Variable,
@@ -27,17 +26,6 @@ border-radius: 3px;
 display: block;
 `;
 
-const InstantBook = styled.div`
-z-index: 10;
-display: flex;
-flex-direction: column;
--webkit-box-align: center;
-align-items: center;
-width: 100%;
-padding: 8px 16px;
-background-color: rgba(0, 0, 0, 0.05);
-box-shadow: rgb(0 0 0 / 10%) 0px -1px;
-`;
 
 //Declaracion de Funciones,
 
@@ -45,19 +33,33 @@ function click(){
   alert('¡Has hecho clic!')
 }
 
-function OpenGiveaway() {
-  createPopup('EmcavTKa', {
-    open: 'load',
-    openValue: undefined,    
-  });
+function saveCookie(labelCookie,value,date) {
+  document.cookie = labelCookie+"="+value+";expires="+date;
+  console.log(document.cookie)
+  }
+function readCookie(labelCookie) {
+  let i=0;
+  let micookie=0;
+      let lista = document.cookie.split(";");
+      for (i in lista) {
+          let busca = lista[i].search(labelCookie);
+          if (busca > -1) {micookie=lista[i]}
+          }
+      if(micookie ===  0) { return false}
+      else{return true;}
+      }
+function OpenGiveawayHome() {   
+  if(!readCookie("stateCookieGiveawayHome")){
+      saveCookie("stateCookieGiveawayHome","true","31 Dec 2021 23:59:59 GMT")	 
+      createPopup('EmcavTKa', {open: 'time',openValue: 3000,})
+    }
 }
-
-const { toggle } = createPopup('EmcavTKa')
+OpenGiveawayHome(); 
 
 
 function App() {
 
-  <script src="components/modules.js" type="module"></script>;
+  <script  src="components/modules.js" type="module"></script>;
   return (
     <Router>
 
@@ -76,7 +78,6 @@ function App() {
         <popupHomepage/>
         <popupHomepage2/>
 
-        <a data-tf-popup="EmcavTKa" data-tf-auto-close="2000" >open</a>
         <button data-tf-popup="EmcavTKa" data-tf-auto-close="2000" >Giveaway 1</button>
         <button data-tf-popup="EmcavTKa" data-tf-auto-close="2000" >Giveaway 2</button>
         <ButtonColors/>
@@ -88,7 +89,7 @@ function App() {
         </div>
         <ButtonGiveaway />
         <div className="content">
-
+        <Cookiesbutton />
 
           <Switch>
             <Router path="/contact-us">

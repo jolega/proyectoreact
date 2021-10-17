@@ -74,7 +74,7 @@ const dropdownImageHelp = ({ title, message, enlace, url }) => {
       </Dropdown>
 
       <Dropdown>
-        <a className="logo" href="#">
+        <a className="logo" href="/">
           <img onClick={click} src="https://oasis-new-cms.s3.amazonaws.com/dev/logo/ayuda.png" width="15" height="15" alt="" />
         </a>
         <DropdownContent id="popupWindows">
@@ -86,7 +86,7 @@ const dropdownImageHelp = ({ title, message, enlace, url }) => {
       </Dropdown>
 
 
-      <a className="logo">
+      <a className="logo" href="/">
           <img onClick={click} src="https://oasis-new-cms.s3.amazonaws.com/dev/logo/ayuda.png" width="15" height="15" alt="" />
         </a>
 
@@ -98,7 +98,7 @@ const dropdownImageHelp = ({ title, message, enlace, url }) => {
         <Popup trigger={<button>Trigger 2</button>} position="top left">{close => (
               <div>
                  Content here
-               <a className="close" onClick={close}>
+               <a className="close" onClick={close} href="/">
                 &times;
               </a>
             </div>

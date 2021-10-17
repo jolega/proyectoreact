@@ -1,11 +1,10 @@
-//Importacion de Modulos,
-import React, {Fragment } from "react";
+// Importacion de Modulos,
+import { createPopup } from '@typeform/embed';
+import '@typeform/embed/build/css/popup.css';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+// Declaracion de Variable,
 
-
-//Declaracion de Variable,
 const Mystyle = styled.button`
   all: unset;
   font-family: Helvetica, Arial, sans-serif;
@@ -14,37 +13,49 @@ const Mystyle = styled.button`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
   background-color: #379cfb;
+
   color: #000000;
-  font-size: 17px;
-  border-radius: 21px;
-  padding: 0 28px;
+  font-size: 18px;
+  border-radius: 22px;
+  padding: 0 30px;
   font-weight: bold;
-  height: 42.5px;
+  height: 45px;
   cursor: pointer;
-  line-height: 42.5px;
+  line-height: 45px;
   text-align: center;
   margin: 0;
   text-decoration: none;
+
   &:hover {
     color: #ffffff;
   }
 `;
 
+// declaracion del evento
 
+function OpenGiveaway() {
+  createPopup('EmcavTKa', {
+    open: 'time',
+    openValue: 1,
+  });
+}
 
-
-// function component
-
-//Declaracion de Funciones,
-const buttonGiveaway = () => {
+// Declaracion de retunr,
+const ButtonGiveaway = () => {
   return (
-     <Fragment>   
-         <Mystyle data-tf-popup="EmcavTKa" data-tf-auto-close="2000">  
-         Giveaway3
-           </Mystyle>       
-     </Fragment>
+    <Fragment>
+      <Mystyle
+        onClick={e => {
+          e.preventDefault();
+          OpenGiveaway();
+        }}
+      >
+        Enter the Giveaway
+      </Mystyle>
+    </Fragment>
   );
 };
- //Ejecucion del Codigo
-export default buttonGiveaway;
+// Ejecucion del Codigo
+export default ButtonGiveaway;
