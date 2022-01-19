@@ -38,10 +38,9 @@ function saveCookie(labelCookie,value,date) {
   console.log(document.cookie)
   }
 function readCookie(labelCookie) {
-  let i=0;
   let micookie=0;
       let lista = document.cookie.split(";");
-      for (i in lista) {
+      for(let i=0; i< lista.length ; i++) {
           let busca = lista[i].search(labelCookie);
           if (busca > -1) {micookie=lista[i]}
           }
@@ -54,12 +53,13 @@ function OpenGiveawayHome() {
       createPopup('EmcavTKa', {open: 'time',openValue: 3000,})
     }
 }
-OpenGiveawayHome(); 
+
 
 
 function App() {
 
   <script  src="components/modules.js" type="module"></script>;
+  OpenGiveawayHome(); 
   return (
     <Router>
 
